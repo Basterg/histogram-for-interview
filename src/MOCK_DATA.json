@@ -1,0 +1,89 @@
+{
+	"nickname": "User123",
+	"finance": {
+		"total": {
+			"sum": 10000,
+			"donators_count": 500,
+			"regular_donators_count": 200
+		},
+		"periods": [
+			{
+				"earnings": {
+					"year_sum": 8000,
+					"six_month_sum": 4000,
+					"last_month_sum": 1000
+				},
+				"graph": {
+					"year": {
+						"January": 500,
+						"February": 800,
+						"March": 1200,
+						"April": 900,
+						"May": 1500,
+						"June": 2000,
+						"July": 1800,
+						"August": 1300,
+						"September": 1100,
+						"October": 900,
+						"November": 600,
+						"December": 400
+					},
+					"half_year": {
+						"January": 800,
+						"February": 1200,
+						"March": 1000,
+						"April": 1600,
+						"May": 2000,
+						"June": 1800
+					},
+					"month": {
+						"1": 500,
+						"2": 800,
+						"3": 1200,
+						"4": 900,
+						"5": 1500,
+						"6": 2000,
+						"7": 1800,
+						"8": 1300,
+						"9": 1100,
+						"10": 900,
+						"11": 600,
+						"12": 400,
+						"13": 700,
+						"14": 1000,
+						"15": 1300,
+						"16": 1600,
+						"17": 1800,
+						"18": 1500,
+						"19": 1200,
+						"20": 900,
+						"21": 600,
+						"22": 400,
+						"23": 700,
+						"24": 1000,
+						"25": 1300,
+						"26": 1600,
+						"27": 1800,
+						"28": 1500,
+						"29": 1200,
+						"30": 900,
+						"31": 600
+					}
+				}
+			}
+		]
+	},
+	"gift_settings": {
+		"small_gift": 50,
+		"medium_gift": 100,
+		"big_gift": 200
+	},
+	"gift_stats": {
+		"small_gift_count": 200,
+		"small_gift_sum": 10000,
+		"small_medium_count": 100,
+		"small_medium_sum": 10000,
+		"small_big_count": 50,
+		"small_big_sum": 10000
+	}
+}
