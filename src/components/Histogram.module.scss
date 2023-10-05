@@ -1,3 +1,11 @@
+.chartContainer {
+	max-width: 70vw;
+	margin: 50px auto;
+	border: 1px solid #ccc;
+	background-color: #fff2fe;
+	border-radius: 20px;
+}
+
 .selector {
 	float: right;
 	margin-bottom: 20px;
@@ -5,7 +13,7 @@
 	border-radius: 20px;
 	overflow: hidden;
 	background-color: white;
-	width: 300px; /* Увеличенная ширина селектора */
+	width: 300px;
 }
 
 .selector select {
@@ -15,23 +23,4 @@
 	padding: 8px;
 	font-size: 14px;
 	background-color: white;
-}
-
-.selector select:focus {
-	outline: none;
-}
-
-.selector select option {
-	font-size: 14px;
-	background-color: white;
-	border: 1px solid blue;
-	border-radius: 5px;
-}
-
-.chartContainer {
-	max-width: 70vw;
-	margin: 50px auto;
-	border: 1px solid #ccc;
-	background-color: #fff2fe;
-	border-radius: 20px;
 }

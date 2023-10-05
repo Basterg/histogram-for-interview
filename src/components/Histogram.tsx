@@ -116,7 +116,7 @@ const Histogram: React.FC<Props> = ({ data }) => {
 						},
 						plugins: {
 							legend: {
-								display: true,
+								display: false,
 								position: 'top'
 							},
 							tooltip: {
