@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import Chart from 'chart.js/auto';
+import { Chart, Tooltip } from 'chart.js/auto';
 import styles from './Histogram.module.scss';
 
 interface PeriodData {
@@ -94,14 +94,57 @@ const Histogram: React.FC<Props> = ({ data }) => {
 								data: dataForChart.current,
 								backgroundColor: 'rgba(0, 10, 255, 1)',
 								borderColor: 'rgba(54, 162, 235, 1)',
-								borderWidth: 1
+								borderWidth: 1,
+								borderRadius: 10,
+								barThickness: 20
 							}
 						]
 					},
 					options: {
 						scales: {
+							x: {
+								grid: {
+									display: false
+								}
+							},
 							y: {
-								beginAtZero: true
+								beginAtZero: true,
+								grid: {
+									display: false
+								}
+							}
+						},
+						plugins: {
+							legend: {
+								display: true,
+								position: 'top'
+							},
+							tooltip: {
+								enabled: true,
+								mode: 'index',
+								position: 'nearest',
+								intersect: false,
+								displayColors: false,
+
+								callbacks: {
+									title: function () {
+										return '';
+									},
+									label: function (context) {
+										return context.parsed.y.toString();
+									}
+								},
+								backgroundColor: '#65ff8e',
+								bodyColor: '#000000'
+							}
+						},
+
+						layout: {
+							padding: {
+								left: 20,
+								right: 20,
+								top: 20,
+								bottom: 20
 							}
 						}
 					}
@@ -119,7 +162,6 @@ const Histogram: React.FC<Props> = ({ data }) => {
 	return (
 		<div className={styles.chartContainer}>
 			<div className={styles.selector}>
-				<label>Выбрать период: </label>
 				<select
 					value={selectedPeriod}
 					onChange={e =>
