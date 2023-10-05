@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Chart, Tooltip } from 'chart.js/auto';
+import { Chart, TooltipItem } from 'chart.js/auto';
 import styles from './Histogram.module.scss';
 
 interface PeriodData {
@@ -66,6 +66,20 @@ const Histogram: React.FC<Props> = ({ data }) => {
 		}
 	}, [selectedPeriod, data.finance]);
 
+	const xAxisLabels = function generateXAxisLabels(
+		selectedPeriod: string
+	): (string | number)[] {
+		let xAxisLabels: (string | number)[] = [];
+
+		if (selectedPeriod === 'year' || selectedPeriod === 'half_year') {
+			xAxisLabels = monthNames.slice(0, dataForChart.current.length);
+		} else if (selectedPeriod === 'month') {
+			xAxisLabels = Array.from({ length: 31 }, (_, index) => index + 1);
+		}
+
+		return xAxisLabels;
+	};
+
 	useEffect(() => {
 		updateDataForChart();
 
@@ -76,18 +90,10 @@ const Histogram: React.FC<Props> = ({ data }) => {
 					chartInstance.current.destroy();
 				}
 
-				let xAxisLabels: (string | number)[] = [];
-
-				if (selectedPeriod === 'year' || selectedPeriod === 'half_year') {
-					xAxisLabels = monthNames.slice(0, dataForChart.current.length);
-				} else if (selectedPeriod === 'month') {
-					xAxisLabels = Array.from({ length: 31 }, (_, index) => index + 1);
-				}
-
 				chartInstance.current = new Chart(ctx, {
 					type: 'bar',
 					data: {
-						labels: xAxisLabels,
+						labels: xAxisLabels(selectedPeriod),
 						datasets: [
 							{
 								label: 'Earnings',
@@ -130,7 +136,7 @@ const Histogram: React.FC<Props> = ({ data }) => {
 									title: function () {
 										return '';
 									},
-									label: function (context) {
+									label: function (context: TooltipItem<'bar'>) {
 										return context.parsed.y.toString();
 									}
 								},
