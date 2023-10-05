@@ -76,10 +76,18 @@ const Histogram: React.FC<Props> = ({ data }) => {
 					chartInstance.current.destroy();
 				}
 
+				let xAxisLabels: (string | number)[] = [];
+
+				if (selectedPeriod === 'year' || selectedPeriod === 'half_year') {
+					xAxisLabels = monthNames.slice(0, dataForChart.current.length);
+				} else if (selectedPeriod === 'month') {
+					xAxisLabels = Array.from({ length: 31 }, (_, index) => index + 1);
+				}
+
 				chartInstance.current = new Chart(ctx, {
 					type: 'bar',
 					data: {
-						labels: monthNames.slice(0, dataForChart.current.length),
+						labels: xAxisLabels,
 						datasets: [
 							{
 								label: 'Earnings',
@@ -106,7 +114,7 @@ const Histogram: React.FC<Props> = ({ data }) => {
 				chartInstance.current.destroy();
 			}
 		};
-	}, [updateDataForChart]);
+	}, [updateDataForChart, selectedPeriod]);
 
 	return (
 		<div className={styles.chartContainer}>
